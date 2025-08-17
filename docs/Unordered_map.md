@@ -43,3 +43,70 @@ int main() {
 
     return 0;
 }
+| Function         | Description                                 |
+| ---------------- | ------------------------------------------- |
+| `insert({k,v})`  | Insert a new key-value pair                 |
+| `mp[key]`        | Access or assign value by key               |
+| `find(key)`      | Search for key (returns iterator)           |
+| `erase(key)`     | Remove element with given key               |
+| `size()`         | Number of elements                          |
+| `empty()`        | Checks if container is empty                |
+| `clear()`        | Removes all elements                        |
+| `count(key)`     | Returns 0 or 1 depending if key exists      |
+| `bucket_count()` | Number of hash buckets                      |
+| `load_factor()`  | Elements per bucket (measure of efficiency) |
+| Operation | Average Case | Worst Case |
+| --------- | ------------ | ---------- |
+| Insert    | O(1)         | O(n)       |
+| Search    | O(1)         | O(n)       |
+| Delete    | O(1)         | O(n)       |
+⚠️ Worst case happens if too many keys collide into the same bucket (bad hash function).
+✅ But usually performance is O(1).
+
+🔹 When to Use?
+
+Use unordered_map when:
+
+You need fast lookup/insert/delete.
+
+Ordering is not important.
+
+Examples:
+
+Counting frequency of elements (word/number counts).
+
+Hash-based lookups (e.g., checking if an element exists).
+
+Handling large datasets where map (O(log n)) might be slower.
+
+🔹 Difference Between map and unordered_map
+Feature	map	unordered_map
+Implementation	Balanced BST (Red-Black Tree)	Hash Table
+Order	Keys sorted	No ordering
+Time	O(log n)	O(1) average
+Worst Case	O(log n)	O(n)
+Memory Usage	Less	More (due to buckets)
+🔹 Example: Frequency Count
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    vector<int> arr = {1,2,3,1,2,1,4,3};
+    unordered_map<int,int> freq;
+
+    for(int x : arr){
+        freq[x]++;
+    }
+
+    for(auto &p : freq){
+        cout << p.first << " occurs " << p.second << " times\n";
+    }
+}
+
+👉 In short:
+
+unordered_map = hash table-based key-value container.
+
+Provides very fast search/insert/delete (O(1) average).
+
+Use when you don’t need keys sorted.
