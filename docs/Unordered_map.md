@@ -43,6 +43,12 @@ int main() {
 
     return 0;
 }
+# Unordered Map (C++ STL)
+
+---
+
+## 🔹 Common Functions
+
 | Function         | Description                                 |
 | ---------------- | ------------------------------------------- |
 | `insert({k,v})`  | Insert a new key-value pair                 |
@@ -55,38 +61,50 @@ int main() {
 | `count(key)`     | Returns 0 or 1 depending if key exists      |
 | `bucket_count()` | Number of hash buckets                      |
 | `load_factor()`  | Elements per bucket (measure of efficiency) |
+
+---
+
+## 🔹 Time Complexity
+
 | Operation | Average Case | Worst Case |
 | --------- | ------------ | ---------- |
 | Insert    | O(1)         | O(n)       |
 | Search    | O(1)         | O(n)       |
 | Delete    | O(1)         | O(n)       |
-⚠️ Worst case happens if too many keys collide into the same bucket (bad hash function).
-✅ But usually performance is O(1).
 
-🔹 When to Use?
+⚠️ Worst case happens if too many keys collide into the same bucket (bad hash function).  
+✅ But usually performance is **O(1)**.  
 
-Use unordered_map when:
+---
 
-You need fast lookup/insert/delete.
+## 🔹 When to Use?
 
-Ordering is not important.
+Use `unordered_map` when:
+- You need **fast lookup/insert/delete**.  
+- **Ordering is not important**.  
 
-Examples:
+### Examples
+- Counting frequency of elements (word/number counts).  
+- Hash-based lookups (e.g., checking if an element exists).  
+- Handling large datasets where `map` (O(log n)) might be slower.  
 
-Counting frequency of elements (word/number counts).
+---
 
-Hash-based lookups (e.g., checking if an element exists).
+## 🔹 Difference Between `map` and `unordered_map`
 
-Handling large datasets where map (O(log n)) might be slower.
+| Feature        | `map`                        | `unordered_map`       |
+|----------------|-------------------------------|-----------------------|
+| Implementation | Balanced BST (Red-Black Tree) | Hash Table            |
+| Order          | Keys sorted                   | No ordering           |
+| Time           | O(log n)                      | O(1) average          |
+| Worst Case     | O(log n)                      | O(n)                  |
+| Memory Usage   | Less                          | More (due to buckets) |
 
-🔹 Difference Between map and unordered_map
-Feature	map	unordered_map
-Implementation	Balanced BST (Red-Black Tree)	Hash Table
-Order	Keys sorted	No ordering
-Time	O(log n)	O(1) average
-Worst Case	O(log n)	O(n)
-Memory Usage	Less	More (due to buckets)
-🔹 Example: Frequency Count
+---
+
+## 🔹 Example: Frequency Count
+
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -102,11 +120,3 @@ int main() {
         cout << p.first << " occurs " << p.second << " times\n";
     }
 }
-
-👉 In short:
-
-unordered_map = hash table-based key-value container.
-
-Provides very fast search/insert/delete (O(1) average).
-
-Use when you don’t need keys sorted.
