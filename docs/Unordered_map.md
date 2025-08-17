@@ -47,6 +47,14 @@ int main() {
 
 ---
 
+# `unordered_map` in C++
+
+`unordered_map` is a hash table–based key-value container in C++.  
+It provides very fast search/insert/delete operations with **O(1) average complexity**.  
+Keys are **not ordered** (unlike `map`, which keeps keys sorted).
+
+---
+
 ## 🔹 Common Functions
 
 | Function         | Description                                 |
@@ -72,33 +80,35 @@ int main() {
 | Search    | O(1)         | O(n)       |
 | Delete    | O(1)         | O(n)       |
 
-⚠️ Worst case happens if too many keys collide into the same bucket (bad hash function).  
-✅ But usually performance is **O(1)**.  
+⚠️ **Worst case** happens if too many keys collide into the same bucket (bad hash function).  
+✅ But usually, performance is **O(1)**.  
 
 ---
 
 ## 🔹 When to Use?
 
 Use `unordered_map` when:
-- You need **fast lookup/insert/delete**.  
-- **Ordering is not important**.  
 
-### Examples
+- You need **fast lookup/insert/delete**.  
+- Ordering of keys is **not important**.  
+
+Examples:
+
 - Counting frequency of elements (word/number counts).  
 - Hash-based lookups (e.g., checking if an element exists).  
-- Handling large datasets where `map` (O(log n)) might be slower.  
+- Handling large datasets where `map` (`O(log n)`) might be slower.  
 
 ---
 
 ## 🔹 Difference Between `map` and `unordered_map`
 
-| Feature        | `map`                        | `unordered_map`       |
-|----------------|-------------------------------|-----------------------|
-| Implementation | Balanced BST (Red-Black Tree) | Hash Table            |
-| Order          | Keys sorted                   | No ordering           |
-| Time           | O(log n)                      | O(1) average          |
-| Worst Case     | O(log n)                      | O(n)                  |
-| Memory Usage   | Less                          | More (due to buckets) |
+| Feature        | `map` (Ordered)                 | `unordered_map` (Unordered) |
+| -------------- | ------------------------------- | --------------------------- |
+| Implementation | Balanced BST (Red-Black Tree)   | Hash Table                  |
+| Order          | Keys sorted                     | No ordering                 |
+| Time           | O(log n)                        | O(1) average                |
+| Worst Case     | O(log n)                        | O(n)                        |
+| Memory Usage   | Less                            | More (due to buckets)       |
 
 ---
 
@@ -120,3 +130,4 @@ int main() {
         cout << p.first << " occurs " << p.second << " times\n";
     }
 }
+
